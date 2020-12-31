@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NewsService } from '../news/news.service';
+import { News } from '../models/News';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  titlePrimary: string = 'Listado de las últimas 15 noticias';
+  news: News[] = [];
 
+  constructor(private newsService: NewsService) {
+    this.loadLastNews();
+  }
+
+  loadLastNews() {
+    this.newsService.getLastNews().subscribe((data: News[]) => {
+      this.news = data;
+    },(error) => {
+      console.log("Error al obtener las noticias");
+    });
+  }
 }

@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ titlePrimary }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header collapse="condense">
+      <ion-card-title size="large">{{ new?.title.rendered }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="ion-text-justify">
+      <ion-img [src]="new?.jetpack_featured_media_url" class="ion-margin-bottom"></ion-img>
+      <ion-card-subtitle class="ion-text-end ion-margin-bottom">Fecha publicación: {{ new?.date | date: 'dd/MM/yyyy hh:mm' }}</ion-card-subtitle>
+      <p [innerHTML]="new?.content.rendered"></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
